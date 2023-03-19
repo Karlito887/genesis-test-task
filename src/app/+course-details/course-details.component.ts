@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 @Component({
   templateUrl: './course-details.component.html',
-  styleUrls: ['./course-details.component.css']
+  styleUrls: ['./course-details.component.scss']
 })
 export class CourseDetailsComponent implements OnInit {
 

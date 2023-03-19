@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 
 import {Observable} from 'rxjs';
 
+import {PreviewCoursesListInterface} from '../interfaces';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,7 @@ export class CoursesApiService {
     return this.httpClient.get(`${this.apiUrl}/auth/anonymous?platform=subscriptions`);
   }
 
-  public getCoursesList(): Observable<any> {
-    return this.httpClient.get(`${this.apiUrl}/core/preview-courses`);
+  public getCoursesList(): Observable<PreviewCoursesListInterface> {
+    return this.httpClient.get<PreviewCoursesListInterface>(`${this.apiUrl}/core/preview-courses`);
   }
 }

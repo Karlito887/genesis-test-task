@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 
-import {Subject} from 'rxjs';
+import {Subject, takeUntil} from 'rxjs';
 
 import {TokenService} from './core/services/token.service';
 
@@ -8,7 +8,7 @@ import {TokenService} from './core/services/token.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
   private readonly unsubscribe$: Subject<void> = new Subject<void>();
@@ -17,7 +17,9 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.tokenService.setToken().subscribe();
+    this.tokenService.setToken()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe();
   }
 
   public ngOnDestroy(): void {
