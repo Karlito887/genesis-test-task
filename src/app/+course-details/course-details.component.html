@@ -1,1 +1,4 @@
-<p>course-details works!</p>
+<div *ngIf="!!course">
+  <video [poster]="course.lessons[0].previewImageLink + '/' + course.lessons[0].order + '.webp'" [src]="course.lessons[0].link" autoplay controls>
+  </video>
+</div>

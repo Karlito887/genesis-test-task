@@ -1,13 +1,14 @@
-<h1>Ignite Your Mind:</h1>
-<h2>Explore Your Passions and Build Your Skills</h2>
-
 <div class="courses-list">
-  <div *ngFor="let course of currentCoursesPortion" class="item" (click)="selectCourse(course.id)">
+  <div *ngFor="let course of currentCoursesPortion"
+       class="item">
     <div class="photo-wrapper">
+      <video [src]="course.meta.courseVideoPreview.link" autoplay [poster]="course.meta.courseVideoPreview.previewImageLink + '/cover.webp'" controls>
+      </video>
+
       <img [src]="course.previewImageLink + '/cover.webp'" alt="preview image">
     </div>
 
-    <div class="info">
+    <div class="info" (click)="selectCourse(course.id)">
       <p class="title">{{course.title}}</p>
 
       <div class="details">

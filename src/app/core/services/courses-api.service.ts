@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 
 import {Observable} from 'rxjs';
 
-import {PreviewCoursesListInterface} from '../interfaces';
+import {CourseDetailedInterface, PreviewCoursesListInterface} from '../interfaces';
 
 
 @Injectable({
@@ -23,7 +23,7 @@ export class CoursesApiService {
     return this.httpClient.get<PreviewCoursesListInterface>(`${this.apiUrl}/core/preview-courses`);
   }
 
-  public getCourseDetails(courseId: string): Observable<any> {
-    return this.httpClient.get<any>(`${this.apiUrl}/core/preview-courses/${courseId}`);
+  public getCourseDetails(courseId: string): Observable<CourseDetailedInterface> {
+    return this.httpClient.get<CourseDetailedInterface>(`${this.apiUrl}/core/preview-courses/${courseId}`);
   }
 }

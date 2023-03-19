@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {catchError, Subject, takeUntil, throwError} from 'rxjs';
 
 import {CoursesApiService} from '../core/services';
+import {CourseDetailedInterface} from '../core/interfaces';
 
 
 @Component({
@@ -12,6 +13,8 @@ import {CoursesApiService} from '../core/services';
 })
 export class CourseDetailsComponent implements OnInit, OnDestroy {
   private readonly unsubscribe$: Subject<void> = new Subject<void>();
+
+  public course!: CourseDetailedInterface;
 
   constructor(private readonly coursesApiService: CoursesApiService,
               private readonly activatedRoute: ActivatedRoute,
@@ -30,8 +33,8 @@ export class CourseDetailsComponent implements OnInit, OnDestroy {
           return throwError(error);
         }),
         takeUntil(this.unsubscribe$))
-      .subscribe(res => {
-        console.log(res);
+      .subscribe(course => {
+        this.course = course;
       });
   }
 
