@@ -22,4 +22,8 @@ export class CoursesApiService {
   public getCoursesList(): Observable<PreviewCoursesListInterface> {
     return this.httpClient.get<PreviewCoursesListInterface>(`${this.apiUrl}/core/preview-courses`);
   }
+
+  public getCourseDetails(courseId: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrl}/core/preview-courses/${courseId}`);
+  }
 }

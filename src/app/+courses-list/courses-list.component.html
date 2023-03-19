@@ -1,7 +1,38 @@
-<div class="courses-list">
-  <div class="item" *ngFor="let course of currentCoursesPortion">
+<h1>Ignite Your Mind:</h1>
+<h2>Explore Your Passions and Build Your Skills</h2>
 
-    <p>{{course.title}}</p>
+<div class="courses-list">
+  <div *ngFor="let course of currentCoursesPortion" class="item" (click)="selectCourse(course.id)">
+    <div class="photo-wrapper">
+      <img [src]="course.previewImageLink + '/cover.webp'" alt="preview image">
+    </div>
+
+    <div class="info">
+      <p class="title">{{course.title}}</p>
+
+      <div class="details">
+        <div>
+          <div class="label">Skills:
+            <span class="value">{{course.meta.skills | itemsList}}</span>
+          </div>
+
+          <div class="label">Lessons count:
+            <span class="value">{{course.lessonsCount}}</span>
+          </div>
+        </div>
+
+        <div class="rating">
+          <img alt="star icon" class="icon" src="assets/icons/star-solid.svg">
+
+          <p>{{course.rating}}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
+<mat-paginator (page)="changePage($event)"
+               *ngIf="allCourses.length"
+               [length]="allCourses.length"
+               [pageSize]="10">
+</mat-paginator>

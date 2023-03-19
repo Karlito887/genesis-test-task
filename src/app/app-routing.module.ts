@@ -12,9 +12,13 @@ const routes: Routes = [
     loadChildren: () => import('./+courses-list/courses-list.module').then(m => m.CoursesListModule)
   },
   {
-    path: 'course-details',
+    path: 'course-details/:id',
     loadChildren: () => import('./+course-details/course-details.module').then(m => m.CourseDetailsModule)
   },
+  {
+    path: '**',
+    redirectTo: 'courses-list'
+  }
 ];
 
 

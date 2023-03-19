@@ -21,32 +21,10 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 // TODO: check necessity
 @NgModule({
-  declarations: [],
-  imports: [
-    MatButtonModule,
-    MatSnackBarModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatRadioModule,
-    MatMenuModule,
-    MatSortModule,
-    MatTableModule,
-    MatDialogModule,
-    MatTooltipModule,
-    MatSlideToggleModule,
-    MatBadgeModule,
-    MatChipsModule
-  ],
   exports: [
     MatButtonModule,
     MatSnackBarModule,
@@ -67,11 +45,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatTooltipModule,
     MatSlideToggleModule,
     MatBadgeModule,
-    MatChipsModule
-  ],
-  providers: [
-    MatDatepickerModule,
-    MatNativeDateModule
+    MatChipsModule,
+    MatPaginatorModule
   ]
 })
 export class MaterialModule {

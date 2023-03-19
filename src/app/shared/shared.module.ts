@@ -4,13 +4,19 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {MaterialModule} from './modules/material.module';
 
+import {ItemsListPipe} from './pipes/items-list.pipe';
+
 
 @NgModule({
   exports: [
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    ItemsListPipe
+  ],
+  declarations: [
+    ItemsListPipe
   ]
 })
 export class SharedModule {

@@ -1,4 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {PageEvent} from '@angular/material/paginator';
 
 import {Subject, takeUntil} from 'rxjs';
 
@@ -17,7 +19,8 @@ export class CoursesListComponent implements OnInit, OnDestroy {
   public allCourses: CoursePreviewInterface[] = [];
   public currentCoursesPortion: CoursePreviewInterface[] = [];
 
-  constructor(private readonly coursesApiService: CoursesApiService) {
+  constructor(private readonly coursesApiService: CoursesApiService,
+              private readonly router: Router) {
   }
 
   public ngOnInit(): void {
@@ -25,12 +28,23 @@ export class CoursesListComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(courses => {
         this.allCourses = courses.courses;
-        this.currentCoursesPortion = this.allCourses.slice(0, 1);
+        this.currentCoursesPortion = this.allCourses.slice(0, 10);
       });
   }
 
   public ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+  }
+
+  public changePage(event: PageEvent): void {
+    const end = event.pageIndex * 10 + 10;
+    const start = end - 10;
+
+    this.currentCoursesPortion = this.allCourses.slice(start, end);
+  }
+
+  public selectCourse(id: string): void {
+    this.router.navigate(['course-details', id]);
   }
 }

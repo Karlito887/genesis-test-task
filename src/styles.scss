@@ -6,4 +6,21 @@
 
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #062451;
+  padding: 28px 64px;
+}
+
+// materials override
+.mat-paginator {
+  .mat-paginator-container {
+    justify-content: center;
+
+    .mat-paginator-page-size {
+      display: none;
+    }
+
+    .mat-paginator-range-label {
+      font-size: 14px;
+    }
+  }
 }
