@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {CoursesApiService} from '../core/services/courses-api.service';
 
 @Component({
   templateUrl: './courses-list.component.html',
@@ -6,10 +7,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class CoursesListComponent implements OnInit {
 
-  constructor() {
+  constructor(private readonly coursesApiService: CoursesApiService) {
   }
 
   public ngOnInit(): void {
+    this.coursesApiService.getCoursesList().subscribe(res => {
+      console.log(res);
+    });
   }
-
 }
